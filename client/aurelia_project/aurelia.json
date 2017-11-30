@@ -63,6 +63,12 @@
           "aurelia-task-queue",
           "aurelia-templating",
           "aurelia-templating-binding",
+          {
+            "name": "regenerator-runtime",
+            "path": "../node_modules/regenerator-runtime",
+            "main": "runtime-module"
+            },
+            
 
           {
             "name": "aurelia-fetch-client",

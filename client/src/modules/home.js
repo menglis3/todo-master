@@ -2,14 +2,14 @@
 //import, inject and create variable in the constructor
 import {inject} from 'aurelia-framework'; //import modules into home object
 import {Router} from 'aurelia-router'; //The router we configured
-import { Users } from '../resources/data/users';
+import {Users} from '../resources/data/users';
 import {AuthService} from 'aurelia-auth';
 
 
 @inject(Router, Users, AuthService)
 
 export class Home {
-    constructor(router, Users, auth){
+    constructor(router, users, auth){
         this.router = router;
         this.users = users;
         this.message = "Home";
@@ -44,7 +44,7 @@ export class Home {
             lastName: "",
             email: "",
             password: ""
-            }
+        }
             this.registerError = "";
         this.showLogin = false;
     }
@@ -58,7 +58,7 @@ export class Home {
               }
         }
         
-    
+
     save(){
         this.showLogin = true
     }

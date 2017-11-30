@@ -16,12 +16,12 @@ module.exports = function (app, config) {
 // this passes the req, res, next object
 
 
-var requireLogin = passport.authenticate('local', { session: false });
+var requireLogin = passport.authenticate('jwt', { session: false });
 
 router.route('/users/login').post(requireLogin, login);
 
-
-router.route('/users').get(requireAuth, function(req, res, next){
+//Get All Users
+router.get('/users').get(requireAuth, function(req, res, next){
     logger.log('Get all users', 'verbose');
 
     var query = User.find()
@@ -38,6 +38,24 @@ router.route('/users').get(requireAuth, function(req, res, next){
         return next(err);
     });
 })
+
+//Get a User
+router.get('/users/:userId', function(req, res, next){
+        logger.log('Get user ' + req.params.userId, 'verbose');
+        User.findById(req.params.userId)
+            .then(user => {
+                if(user){
+                    res.status(200).json(user);
+                } else {
+                    res.status(404).json({message: "No user found"});
+                }
+            })
+            .catch(error => {
+                return next(error);
+            });
+    }); 
+
+
 
     router.route('/users/userId').post(function(req, res, next){
         logger.log('Create users' + req.params.userId, 'verbose');
@@ -62,6 +80,8 @@ router.route('/users').get(requireAuth, function(req, res, next){
     });
     */
 
+
+    //Put Handler 
     router.put('/users/password/:userId', function(req, res, next){
         logger.log('Update user ' + req.params.userId, 'verbose');
     
@@ -85,6 +105,7 @@ router.route('/users').get(requireAuth, function(req, res, next){
             });
     });
     
+    //Delete Handler
     router.route('/users/:userId').delete(function(req, res, next){
         logger.log('Delete user' + req.params.userId, 'verbose');
         res.status(200).json({message: "Delete user" + req.params.userId});
@@ -99,4 +120,18 @@ router.route('/users').get(requireAuth, function(req, res, next){
       res.status(201).json(obj);
   });
   
+// Post Handler
+  router.post('/users', function (req, res, next) {
+    logger.log('Create User', 'verbose');
+    var user = new User(req.body);
+    user.save()
+    .then(result => {
+        res.status(201).json(result);
+    })
+    .catch( err => {
+       return next(err);
+    });
+  })
+
 };
+

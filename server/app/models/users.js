@@ -18,6 +18,8 @@ var UserSchema = new Schema({
     return this.firstName + ' ' + this.lastName;
 });
 */
+
+//Authentication 
 UserSchema.pre('save', function (next) {
     var person = this;
     if (this.isModified('password') || this.isNew) { 
@@ -38,6 +40,7 @@ UserSchema.pre('save', function (next) {
     }
 });
 
+//Password Submitted by User
 UserSchema.methods.comparePassword = function (passw, cb) {
     Bcrypt.compare(passw, this.password, function (err, isMatch) {
         if (err) {
