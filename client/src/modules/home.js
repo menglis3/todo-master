@@ -24,13 +24,8 @@ export class Home {
         .then(response => {
       sessionStorage.setItem("user", JSON.stringify(response.user));
       this.loginError = "";
-  
-        this.router.navigate('list');
-
-            
- 
-
-        })
+      this.router.navigate('list');
+    })
         .catch(error => {
         console.log(error);
         this.loginError = "Invalid credentials.";

@@ -1,5 +1,15 @@
 import { inject } from 'aurelia-framework';
 import {HttpClient, json} from 'aurelia-fetch-client';
+import {inject} from 'aurelia-framework';
+import {DataServices} from './data-services';
+
+@inject(DataServices)
+export class ToDos {
+		constructor(data) {
+			this.data = data;
+			this.TODO_SERVICE = 'todos';
+   		 }
+}
 
 @inject(HttpClient)
 export class DataServices {
