@@ -7,7 +7,8 @@ var express = require('express'),
     passportService = require('../../config/passport'),
     passport = require('passport')
     
-
+    var requireLogin = passport.authenticate('local', { session: false });
+    var requireLogin = passport.authenticate('jwt', { session: false });
 
 // Why do I uses module.exports here? Why do I need to export these?
     // So we can import them...?
@@ -16,7 +17,6 @@ module.exports = function (app, config) {
 // this passes the req, res, next object
 
 
-var requireLogin = passport.authenticate('jwt', { session: false });
 
 router.route('/users/login').post(requireLogin, login);
 

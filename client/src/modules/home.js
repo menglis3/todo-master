@@ -1,5 +1,3 @@
-
-//import, inject and create variable in the constructor
 import {inject} from 'aurelia-framework'; //import modules into home object
 import {Router} from 'aurelia-router'; //The router we configured
 import {Users} from '../resources/data/users';
@@ -53,10 +51,5 @@ export class Home {
               }
         }
         
-
-    save(){
-        this.showLogin = true
-    }
-    
 
 }
