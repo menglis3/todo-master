@@ -6,7 +6,7 @@ var config = {
 development: {    
             root: rootPath,    
             app: {      name: ' ToDo'    },    
-            port: 9000,  
+            port: 5000,  
             db: 'mongodb://127.0.0.1/todo-dev',
             secret: "cayennedlikedhistreats"
  },  
