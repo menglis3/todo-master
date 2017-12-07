@@ -49,7 +49,7 @@ import {ToDos} from '../resources/data/todos';
     
   
 
-      logout(){
+    logout(){
           this.router.navigate('home');
       }
     
