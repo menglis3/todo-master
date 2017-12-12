@@ -1,10 +1,12 @@
 var express = require('express'),
     router = express.Router(),
     logger = require('../../config/logger'),
-    ToDos = require('../models/todos');
+    ToDos = require('../models/todos'),
+    passport = require('passport');
+
 
 //var requireLogin = passport.authenticate('local', { session: false });
-//var requireLogin = passport.authenticate('jwt', { session: false });
+var requireAuth = passport.authenticate('jwt', { session: false });
 
 module.exports = function (app, config) {
     app.use('/api', router);

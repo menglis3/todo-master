@@ -11,7 +11,7 @@ var cors = require('cors');
 module.exports = function (app, config) {
 
   
-  app.use(cors({origin: 'http://localhost:5000'}));
+  app.use(cors({origin: 'http://localhost:9000'}));
 
 
   logger.log("Loading Mongoose functionality");
@@ -50,7 +50,7 @@ module.exports = function (app, config) {
 
   var controllers = glob.sync(config.root + '/app/controllers/*.js');
   controllers.forEach(function (controller) {
-    require(controller);
+    require(controller)(app, config);
   });
 
 

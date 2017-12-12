@@ -9,11 +9,10 @@ export class ToDos {
         		this.TODO_SERVICE = 'todos';
    		 }
 
-    async save(todo){
-        if(todo){
-            let serverResponse = await this.data.post(user, this.TODO_SERVICE);
-            return serverResponse;
-                }
+    async save(todo) {
+        if (todo) {
+            let response = await this.data.post(todo, this.TODOS_SERVICE + "/" + todo._id);
+            return response;
         }
-    
+    }
 }
