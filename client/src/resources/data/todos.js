@@ -55,7 +55,7 @@ export class ToDos {
             formData.append("file" + index, item);
                 });
             
-            let response = await this.data.uploadFiles(formData, this.TODO_SERVICE + 		"/upload/" + userId + "/" + todoId);
+            let response = await this.data.uploadFiles(formData, this.TODO_SERVICE + "/upload/" + userId + "/" + todoId);
             return response;
         }
         

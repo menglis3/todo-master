@@ -40,7 +40,7 @@
         <div class="form-group">
         
             <label for="dueDateInput">Due Date *</label>
-        
+            <flat-picker value.bind="todoObj.dateDue"></flat-picker>
             <input type="date" class="form-control" value.bind="todoObj.dateDue">
             <small id="dueDateHelp" class="form-text text-muted">
                 The date to ToDo is due.</small>
@@ -73,7 +73,7 @@
 			</div>
 		</div>
 
-        
+
         <div class="row">
                 <div class="col">
                     <label class="btn btn-secondary">
