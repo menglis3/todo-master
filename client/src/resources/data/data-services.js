@@ -94,4 +94,21 @@ export class DataServices {
 			});
 	}
 
+
+	//File Upload
+	uploadFiles(files, url){
+	    return this.httpClient
+	    .fetch(url, {
+	        method: 'post',
+	        body: files
+	    })
+	    .then(response => response.json())
+	    .then(object => {
+	        return object;
+	    })
+	    .catch(error => {
+	        return error;
+	    });
+	}
+		
 }
