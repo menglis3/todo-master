@@ -1,5 +1,5 @@
 import { inject } from 'aurelia-framework';
-import { Router } from 'aurelia-router';
+// import { Router } from 'aurelia-router';
 import { AuthService } from 'aurelia-auth';
 import { ToDos } from '../resources/data/todos';
 
@@ -54,12 +54,6 @@ export class List {
             }
             this.showList = true;
         }
-    }
-
-
-
-    logout() {
-        this.router.navigate('home');
     }
 
 
